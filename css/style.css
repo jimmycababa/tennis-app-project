@@ -1,0 +1,33 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+    box-sizing: border-box;
+  }
+  
+  /******************************************
+  /* LAYOUT
+  /*******************************************/
+ body{
+     background-color: teal;
+     text-align: center;
+ }
+ 
+  h1, h2{
+      text-align: center;
+      font-family: 'Press Start 2P', cursive;
+  }
+  
+img{
+    display: block;
+   height: 200px;
+   margin: 0 auto;
+  }
+  
+  
+  /******************************************
+  /* ADDITIONAL STYLES
+  /*******************************************/
+  
