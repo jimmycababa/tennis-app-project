@@ -1,7 +1,12 @@
+const path = require('path')
+const dotenv = require('dotenv')
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
+const cors = require('cors')
 const PORT = 2121
+
+dotenv.config({path: './config/config.env'})
 
 let db,
     dbConnectionStr = 'mongodb+srv://demo:demo@cluster0.lxhnr.mongodb.net/tennis-app-project?retryWrites=true&w=majority',
@@ -24,6 +29,15 @@ let db,
      app.get('/', (req, res) => {
         res.render('index.ejs')
      })
+
+     app.post('/enterZip', (req, res) =>{
+         console.log(req.body.zipItem)
+     db.collection('courts').insertOne({todo: req.body.zipItem})
+     .then(result => {
+         console.log('zip added')
+         res.redirect('/')
+     })
+ })
 
      app.listen(PORT, () =>{
          console.log("server is running")
