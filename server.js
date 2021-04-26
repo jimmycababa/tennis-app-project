@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
 const cors = require('cors')
-const PORT = 2121
+const PORT = process.env.PORT || 2121
 
 dotenv.config({path: './config/config.env'})
 
@@ -25,10 +25,12 @@ let db,
      app.use(express.static('public'))
      app.use(express.urlencoded({ extended: true}))
      app.use(express.json())
+    //  app.use(cors())
 
      app.get('/', (req, res) => {
         res.render('index.ejs')
      })
+    //  app.use('/api/v1/stores', require('./routes/stores'))
 
      app.post('/enterZip', (req, res) =>{
          console.log(req.body.zipItem)
@@ -40,5 +42,5 @@ let db,
  })
 
      app.listen(PORT, () =>{
-         console.log("server is running")
+         console.log(`server is running in ${process.NODE_ENV} mode on port ${PORT}`)
      })
